@@ -1,18 +1,17 @@
 #!/bin/bash
 
-tlist=(1 2 3 4 5)
-tlist2=({3..7})
+list1=(1 2 3 4 5)
+list2=({3..7})
 
-echo tlist ${tlist[@]}
-echo tlist2 ${tlist2[@]}
+#cannot get all element with tlist
+echo list1 ${tist1[@]}
+echo list2 ${list2[@]}
 
-
-
-for i in ${tlist[@]}; do
-echo li1
+for i in ${list1[@]}; do
+echo list1 loop test
 done
 
-for i in $tlist2[@]; do
-echo li2
-done
 
+
+#list with for loop expression
+list3={(i=1; i<5; i++)}
