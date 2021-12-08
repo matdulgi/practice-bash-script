@@ -14,3 +14,12 @@ for((i=1; i<$#; i++));do
     echo arg $i : ${argarr[$i]}
 done
 
+
+
+
+echo '$1':$1
+echo '$2':$2
+echo '$[1]':$[1]
+echo '$[2]':$[2]
+echo '${1}':${1}
+echo '${2}':${2}

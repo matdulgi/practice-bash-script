@@ -31,3 +31,8 @@ arr=($a $b $c $d $e)
 echo arr[] $[iex]: ${arr[$idx]}
 
 
+echo    
+echo CS calculate test
+calval=5
+echo $calval-5
+#result : 5-5  >  print as string
