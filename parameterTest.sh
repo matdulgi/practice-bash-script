@@ -1,0 +1,7 @@
+echo "scriptname ${0}"
+echo "quantity ${#}"
+echo "values1* ${*}"
+echo "values2@ ${@}"
+echo "1th ${1}"
+echo "2th ${2}"
+echo "3th ${3}"
