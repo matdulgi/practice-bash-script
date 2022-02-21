@@ -19,6 +19,11 @@ function help(){
   echo usage: search.sh path keyword1 [keyword2 ...]
 }
 
+function searchFile(){
+  eval cat '$1' | grep $grep_opt
+}
+
+
 #parse ls -R
 # ls-R directory example) ./dir1/dir2:
 # need to convert it like './dir1/dir2/'
@@ -36,7 +41,7 @@ elif [ -d $1 ]; then
   mod=dir
 #  echo mod : dir
   dir=$1
-  echo directory : $dir
+#  echo directory : $dir
 elif [ -f $1 ]; then
   echo mod : file
 #  mod=file
@@ -75,13 +80,15 @@ case $mod in
 
       echo ' '
       file="$top$i"
-      echo file : $file
 
-    if [[ $i != $result && './'$i != $0 ]];then
-
+      if [ -f $file ];then
+        echo file : $file
 # file'a name can include parentheses
-      eval cat '$file' | grep $grep_opt
-    fi
+        
+        eval cat '$'file '|' grep $grep_opt
+#        eval cat '$file' | grep -e a
+#        eval 'cat $file | grep -e a'
+      fi
     done
     ;;
 
