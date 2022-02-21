@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 keywords=$( echo $@ | cut -f 2- -d ' ' )
 for i in $keywords; do
@@ -66,7 +66,7 @@ fi
 case $mod in 
   dir)
     for i in $(ls -R); do
-      if [[ $i =~ : ]]; then 
+      if [[ "$i" =~ : ]]; then 
         top=$(convert_dir $i)
         echo ' '
         echo ### top : $top
@@ -74,12 +74,13 @@ case $mod in
       fi
 
       echo ' '
-      file=$top$i
+      file="$top$i"
       echo file : $file
 
     if [[ $i != $result && './'$i != $0 ]];then
 
-      eval "cat $file | grep $grep_opt"
+# file'a name can include parentheses
+      eval cat '$file' | grep $grep_opt
     fi
     done
     ;;
