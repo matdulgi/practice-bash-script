@@ -20,7 +20,7 @@ function help(){
 }
 
 function searchFile(){
-  eval cat '$1' | grep $grep_opt
+  eval cat '$1' '|' grep $grep_opt
 }
 
 
@@ -71,23 +71,29 @@ fi
 case $mod in 
   dir)
     for i in $(ls -R); do
-      if [[ "$i" =~ : ]]; then 
+      if [[ "$i" =~ :$ ]]; then 
         top=$(convert_dir $i)
-        echo ' '
-        echo ### top : $top
         continue
       fi
 
-      echo ' '
       file="$top$i"
+      if [ ! -f $file ]; then
+        continue
+      fi
 
-      if [ -f $file ];then
+      grepped_content=$( searchFile $file )
+
+      if [[ ! -z $grepped_content ]];then
+
+        echo ' '
         echo file : $file
-# file'a name can include parentheses
+
         
-        eval cat '$'file '|' grep $grep_opt
-#        eval cat '$file' | grep -e a
-#        eval 'cat $file | grep -e a'
+# escape parentheses of filename, pipeline
+#        content=$( eval cat '$file' '|' grep $grep_opt )
+#        content=$( searchFile $file )
+        searchFile $file        
+# echo $content
       fi
     done
     ;;
