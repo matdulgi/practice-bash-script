@@ -24,13 +24,14 @@ function searchFile(){
 }
 
 
-#parse ls -R
-# ls-R directory example) ./dir1/dir2:
+# parse ls -R
+# ls -R directory  e.g. ./dir1/dir2:
 # need to convert it like './dir1/dir2/'
 function convert_dir(){
 #  return $( echo $i | sed 's/:/\//')
   echo $i | sed 's/:/\//'
 }
+
 
 # 
 if [ ! -e $1 ]; then
@@ -49,12 +50,14 @@ else
   echo "exception"
 fi
 
+
 #
 if [ -z $2 ]; then
   echo no keyword
   help
   exit
 fi
+
 
 #rm_wd=.txt
 #echo "# file list" >> $result
