@@ -4,12 +4,13 @@ IFS_O=$IFS
 IFS=$'\n'
 dir=$1
 
-if [ -z $dir ]; then
-  dir=$(pwd)
-fi
-echo directory : $dir
+cd $dir
+# if [ -z $dir ]; then
+#  dir=$(pwd)
+# fi
+# echo directory : $dir
 
-#arr=( $(ls -R) )
+
 for i in $(ls -R); do
   if [[ $i =~ : ]]; then 
     top=$( echo $i | sed 's/:/\//')
