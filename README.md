@@ -1,1 +1,1 @@
-# shellScriptPractice
+# practice-bash-shell-script
